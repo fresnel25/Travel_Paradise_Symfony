@@ -1,7 +1,9 @@
 
 services:
   app:
-    image: php:8.3-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: symfony_app
     volumes:
       - .:/var/www/symfony
@@ -12,8 +14,6 @@ services:
       - symfony
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    environment:
-      PHP_EXTENSION_INSTALL: pdo pdo_mysql
 
   nginx:
     image: nginx:latest
@@ -39,6 +39,8 @@ services:
       MYSQL_PASSWORD: fraj_dev
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql  
     networks:
       - symfony
 
@@ -54,7 +56,10 @@ services:
       - db
     networks:
       - symfony
-
+  
 networks:
   symfony:
     driver: bridge
+
+volumes:
+  mysql_data:
