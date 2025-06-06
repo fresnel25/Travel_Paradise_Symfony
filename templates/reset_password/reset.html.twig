@@ -1,12 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Réinitialiser le mot de passe
+{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+	<div class="card d-flex justify-content-center align-items-center vh-100 body">
+		<div class="card shadow-lg p-3 mb-5 bg-body rounded w-50">
+			<div class="row">
+				<div class="d-flex gap-4 justify-content-center w-100">
+					<div class="img bglogin col-md-5">
+						<img src="{{ asset('image/imgs/login_img1.svg') }}" class="img-fluid">
+					</div>
+					<div class="login-content col-md-7">
+						{{ form_start(resetForm) }}
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+						<img src="{{ asset('image/imgs/logo.png') }}" class="mb-4">
+
+						<div class="input-div one mb-3 mt-4 w-100">
+							<div class="i">
+								<i class="fas fa-lock"></i>
+							</div>
+							<div class="div">
+								<h5>Nouveau mot de passe</h5>
+								{{ form_widget(resetForm.plainPassword.first, {
+								'attr': {
+									'class': 'input w-100',
+								}
+							}) }}
+								{{ form_errors(resetForm.plainPassword.first) }}
+							</div>
+						</div>
+
+						<div class="input-div one mb-3 mt-4 w-100">
+							<div class="i">
+								<i class="fas fa-lock"></i>
+							</div>
+							<div class="div">
+								<h5>Confirmer le mot de passe</h5>
+								{{ form_widget(resetForm.plainPassword.second, {
+								'attr': {
+									'class': 'input w-100',
+								}
+							}) }}
+								{{ form_errors(resetForm.plainPassword.second) }}
+							</div>
+						</div>
+
+						<div class="text-center mt-4">
+							<button type="submit" class="btn1">RÉINITIALISER LE MOT DE PASSE</button>
+						</div>
+
+						{{ form_rest(resetForm) }}
+						{{ form_end(resetForm, {'render_rest': false}) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="{{ asset('js/loginform.js') }}"></script>
 {% endblock %}
