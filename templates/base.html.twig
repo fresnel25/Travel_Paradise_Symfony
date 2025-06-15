@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Travel Paradise!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/loginform.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
