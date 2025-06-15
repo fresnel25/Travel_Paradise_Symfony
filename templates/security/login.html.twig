@@ -1,35 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
+
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+	<div class="card d-flex justify-content-center align-items-center vh-100 body">
+		<div class="card shadow-lg p-3 mb-5 bg-body rounded w-50">
+			<div class="row">
+				<div class="d-flex gap-4 justify-content-center w-100">
+					<div class="img bglogin col-md-5">
+						<img src="{{ asset('image/imgs/login_img1.svg') }}" class="img-fluid">
+					</div>
+					<div class="login-content col-md-7">
+						<form method="post">
+							{% if error %}
+								<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+							{% if app.user %}
+								<div class="mb-3">
+									You are logged in as
+									{{ app.user.userIdentifier }},
+									<a href="{{ path('app_logout') }}">Logout</a>
+								</div>
+							{% endif %}
+							<img src="{{ asset('image/imgs/logo.png') }}">
+							<div class="input-div one mt-4">
+								<div class="i">
+									<i class="fas fa-user"></i>
+								</div>
+								<div class="div">
+									<h5>Email</h5>
+									<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" autocomplete="email" required autofocus>
+								</div>
+							</div>
+							<div class="input-div pass">
+								<div class="i">
+									<i class="fas fa-lock"></i>
+								</div>
+								<div class="div">
+									<h5>Password</h5>
+									<input type="password" name="password" id="inputPassword" class="input" autocomplete="current-password" required>
+									<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+								</div>
+							</div>
+							<div class="row d-flex mt-4">
+								<div class="checkbox col-md-6">
+									<label>
+										<input type="checkbox" class="input" name="_remember_me">
+										Remember me
+									</label>
+								</div>
+								<div class="col-md-6 text-end">
+									<a href="{{ path('app_forgot_password_request') }}">
+										Forget Password ?
+									</a>
+								</div>
+							</div>
+							<input class="btn1 mt-4" type="submit" value="Login">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{{ asset('js/loginform.js') }}"></script>
 
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
-    </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-<a href="{{path('app_forgot_password_request')}}"> Reset password </a>
 {% endblock %}
