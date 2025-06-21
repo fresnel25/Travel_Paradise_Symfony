@@ -32,17 +32,17 @@ class VisitForm extends AbstractType
             ->add('guide', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => function (User $user) {
-                    return $user->getFirstName() . ' ' . $user->getLastName(); // ou autre
+                    return $user->getFirstName() . ' ' . $user->getLastName();
                 },
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->where('JSON_CONTAINS(u.roles, :role) = 1')
-                        ->setParameter('role', json_encode('ROLE_GUIDE'));
+                        ->where('u.roles LIKE :role')
+                        ->setParameter('role', '%ROLE_GUIDE%');
                 },
-                'required' => false,
+                'required' => true,
                 'placeholder' => 'Sélectionnez un guide',
                 'label' => 'Guide Touristique',
-            ]);;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
