@@ -503,6 +503,7 @@ h4 {
     font-size: 20px;
     min-width: 24px;
     text-align: center;
+    color: #d57133;
 }
 
 /* Main content adjustment */
@@ -580,4 +581,57 @@ h4 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.table-head-bg {
+  background-color: #1C2E45 !important;
+}
+
+.table-head-bg th {
+  background-color: #1C2E45 !important;
+  color: white !important;
+}
+.titre {
+  font-family: 'Poppins', sans-serif;
+  font-size: 35px;
+  color: #1C2E45;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.375rem;
+}
+
+.badge-success-soft {
+  background-color: #a3f2ce;
+  color: #0f5132;
+}
+
+.badge-danger-soft {
+  background-color: #f3b7bc;
+  color: #842029;
+}
+
+.badge-warning-soft {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.badge-info-soft {
+  background-color: #cff4fc;
+  color: #055160;
+}
+
+img.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
 }
