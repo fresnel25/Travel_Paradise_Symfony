@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New User
+{% endblock %}
+
+{% block content %}
+
+	<div class="card">
+		<h1 class="titre text-center">Créer un utilisateur</h1>
+	</div>
+
+	<div class="card mt-5">
+		{{ include('user/_form.html.twig') }}
+	</div>
+
+	<a href="{{ path('app_user_index') }}">back to list</a>
+	<script type="text/javascript" src="{{ asset('js/loginform.js') }}"></script>
+{% endblock %}

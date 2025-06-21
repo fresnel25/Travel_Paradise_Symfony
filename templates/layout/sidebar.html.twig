@@ -1,0 +1,55 @@
+{% block body %}
+	<div
+		class="sidebar">
+		{# <div class="sidebar-header">
+					<img src="{{ asset('image/imgs/whatsapp_image_2025_05_28_at_18_27_27_1749274277647_206.png') }}" alt="Logo" class="navbar-logo">
+					<h2 class="sidebar-title">TravelParadise</h2>
+				</div> #}
+		<ul class="sidebar-menu mt-5">
+			<li>
+				<a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">
+					<i class="bi bi-house-door"></i>
+					Dashboard
+				</a>
+			</li>
+			<li>
+				<a href="#" class="{{ app.request.attributes.get('_route') == 'app_tour_guides' ? 'active' : '' }}">
+					<i class="bi bi-person-badge"></i>
+					Tour Guides
+				</a>
+			</li>
+			{# <li>
+				<a href="{{ path('app_visit') }}" class="{{ app.request.attributes.get('_route') == 'app_visit' ? 'active' : '' }}">
+					<i class="bi bi-geo-alt"></i>
+					Visits
+				</a>
+			</li> #}
+			<li>
+				<a href="#" class="{{ app.request.attributes.get('_route') == 'app_statistics' ? 'active' : '' }}">
+					<i class="bi bi-graph-up"></i>
+					Statistics
+				</a>
+			</li>
+			{# <li>
+				<a href="{{ path('app_visitor') }}" class="{{ app.request.attributes.get('_route') == 'app_visitor' ? 'active' : '' }}">
+					<i class="bi bi-people"></i>
+					Visitors
+				</a>
+			</li> #}
+			<li>
+				<a href="{{ path('app_user_index') }}" class="{{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}">
+					<i class="bi bi-person"></i>
+					Users
+				</a>
+			</li>
+			<li>
+				<a href="{{path('app_logout')}}" class="{{ app.request.attributes.get('_route') == 'app_logout' ? 'active' : '' }}">
+					<i class="bi bi-box-arrow-right"></i>
+					Sign Out
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+{% endblock %}
