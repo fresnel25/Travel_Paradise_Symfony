@@ -1,0 +1,42 @@
+/* styles pour les formulaires personnalisés */
+
+.form-card {
+  max-width: 500px;
+  margin: 3rem auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  background: #fff;
+}
+.form-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1C2E45;
+}
+.form-card .form-label {
+  font-weight: 500;
+  color: #444A6D;
+}
+.form-card .form-control {
+  border-radius: 8px;
+  border: 1px solid #C3D3E2;
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+.form-card .form-control:focus {
+  border-color: #4079ED;
+  box-shadow: 0 0 0 2px rgba(64,121,237,0.1);
+}
+.form-card .btn-primary {
+  background: #4079ED;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+}
+.form-card .btn-primary:hover {
+  background: #305bb5;
+}
+.form-card .btn-link {
+  color: #4079ED;
+  text-decoration: underline;
+}
