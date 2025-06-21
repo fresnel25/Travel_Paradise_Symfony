@@ -43,6 +43,10 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/guide, roles: ROLE_GUIDE }
 
+        - { path: ^/visit/new, roles: ROLE_ADMIN }
+        - { path: ^/visit/\d+/edit, roles: ROLE_ADMIN }
+        - { path: ^/visit/\d+$, methods: [POST], roles: ROLE_ADMIN } # delete en POST
+
         # Autoriser accès public à login/register/reset-password
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }

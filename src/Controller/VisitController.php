@@ -7,10 +7,13 @@ use App\Form\VisitForm;
 use App\Repository\VisitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/visit')]
 final class VisitController extends AbstractController
@@ -24,41 +27,48 @@ final class VisitController extends AbstractController
     }
 
     #[Route('/new', name: 'app_visit_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
     {
         $visit = new Visit();
         $form = $this->createForm(VisitForm::class, $visit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile[] $uploadedPictures */
-            $uploadedPictures = $form->get('pictures')->getData();
+            // Gérer l’upload des photos
+            $pictures = $form->get('pictures')->getData();
+            $picturePaths = [];
 
-            $pictureFilenames = [];
-            if ($uploadedPictures) {
-                foreach ($uploadedPictures as $picture) {
-                    $newFilename = uniqid() . '.' . $picture->guessExtension();
+            foreach ($pictures as $picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+
+                try {
                     $picture->move(
-                        $this->getParameter('uploads_directory'), // define this in services.yaml or controller
+                        $this->getParameter('pictures_directory'), // doit être défini dans services.yaml
                         $newFilename
                     );
-                    $pictureFilenames[] = $newFilename;
+                    $picturePaths[] = $newFilename;
+                } catch (FileException $e) {
+                    // Gestion de l'erreur
                 }
             }
 
-            $visit->setPictures($pictureFilenames);
+            // Enregistre les chemins des images en JSON
+            $visit->setPictures($picturePaths); // Assure-toi que le champ est de type json dans l'entité
 
-            $entityManager->persist($visit);
-            $entityManager->flush();
+            $em->persist($visit);
+            $em->flush();
 
-            return $this->redirectToRoute('app_visit_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_visit_index');
         }
 
         return $this->render('visit/new.html.twig', [
             'visit' => $visit,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
+
 
     #[Route('/{id}', name: 'app_visit_show', methods: ['GET'])]
     public function show(Visit $visit): Response
