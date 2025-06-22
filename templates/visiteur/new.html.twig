@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New Visiteur{% endblock %}
+
+{% block content %}
+    <div class="card mt-5 mx-auto">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-4">Créer un nouveau visiteur</h1>
+            {{ include('visiteur/_form.html.twig', { 'attr': {'class': 'needs-validation'} }) }}
+            <a href="{{ path('app_visiteur_index') }}" class="btn btn-link mt-3">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}
