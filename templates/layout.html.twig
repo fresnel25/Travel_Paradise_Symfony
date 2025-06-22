@@ -10,7 +10,6 @@
 		<!-- Styles CSS -->
 		<link
 		rel="stylesheet" href="{{ asset('css/styles.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/styles/form.css') }}">
 		<!-- Font Awesome -->
 		<link
 		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -27,6 +26,8 @@
 
 		<!-- Bootstrap Icons -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 	</head>
 	<body>
 		<div>
@@ -41,6 +42,77 @@
 			</div>
 
 			<!-- JavaScript -->
+		<script>
+  new Chart(document.getElementById('totalRevenueChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [
+        {
+          label: 'Online Sales',
+          data: [14000, 18000, 6000, 17000, 12000, 16000, 22000],
+          backgroundColor: '#0095FF'
+        },
+        {
+          label: 'Offline Sales',
+          data: [12000, 11000, 22000, 7000, 11000, 14000, 12000],
+          backgroundColor: '#07E098'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+<script>
+  new Chart(document.getElementById('visitorInsightsChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Loyal Customers', 'New Customers', 'Unique Customers'],
+      datasets: [{
+        data: [45, 25, 30],
+        backgroundColor: ['#A700FF', '#EF4444', '#3CD856']
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  new Chart(document.getElementById('visitorsSatisfactionChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Last Month', 'This Month'],
+      datasets: [{
+        data: [1017, 1757],
+        backgroundColor: ['#0095FF', '#07E098']
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 			<script>
 				document.getElementById('sidebarToggle') ?. addEventListener('click', function () {
