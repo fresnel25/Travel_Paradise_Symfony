@@ -1,0 +1,24 @@
+.glass-form {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.icon-ico {
+    color:   #80B69F; /* Couleur bleue */
+}
+
+.icn-but {
+    color:  #3A6554; /* Couleur rouge */
+}
+
+.icon-success {
+    color: #28a745; /* Couleur verte */
+}
