@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VisiteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VisiteurRepository::class)]
@@ -24,6 +26,17 @@ class Visiteur
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $addresse = null;
+
+    /**
+     * @var Collection<int, Associer>
+     */
+    #[ORM\OneToMany(targetEntity: Associer::class, mappedBy: 'visiteur')]
+    private Collection $associers;
+
+    public function __construct()
+    {
+        $this->associers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +87,36 @@ class Visiteur
     public function setAddresse(?string $addresse): static
     {
         $this->addresse = $addresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Associer>
+     */
+    public function getAssociers(): Collection
+    {
+        return $this->associers;
+    }
+
+    public function addAssocier(Associer $associer): static
+    {
+        if (!$this->associers->contains($associer)) {
+            $this->associers->add($associer);
+            $associer->setVisiteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssocier(Associer $associer): static
+    {
+        if ($this->associers->removeElement($associer)) {
+            // set the owning side to null (unless already changed)
+            if ($associer->getVisiteur() === $this) {
+                $associer->setVisiteur(null);
+            }
+        }
 
         return $this;
     }
