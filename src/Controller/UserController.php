@@ -25,6 +25,22 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/guide', name: 'guide_index')]
+    public function index(UserRepository $userRepository): Response
+    {
+        $guides = $userRepository->createQueryBuilder('u')
+            ->where('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_GUIDE%')
+            ->getQuery()
+            ->getResult();
+
+
+        return $this->render('user/index.html.twig', [
+            'users' => $guides,
+        ]);
+    }
+
+
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

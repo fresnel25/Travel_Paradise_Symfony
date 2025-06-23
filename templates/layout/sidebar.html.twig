@@ -4,11 +4,12 @@
 			<li>
 				<a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">
 					<i class="bi bi-house-door"></i>
-					Dashboard
+					Menu
 				</a>
 			</li>
 
 			<li>
+
 				<a href="#" class="{{ app.request.attributes.get('_route') starts with 'app_tour_guides' ? 'active' : '' }}">
 					<i class="bi bi-person-badge"></i>
 					Tour Guides
@@ -18,28 +19,28 @@
 			<li>
 				<a href="{{ path('app_visit_index') }}" class="{{ app.request.attributes.get('_route') matches '/^app_visit(_|$)/' ? 'active' : '' }}">
 					<i class="bi bi-geo-alt"></i>
-					Visits
+					Visites
 				</a>
 			</li>
 
 			<li>
 				<a href="#" class="{{ app.request.attributes.get('_route') starts with 'app_statistics' ? 'active' : '' }}">
 					<i class="bi bi-graph-up"></i>
-					Statistics
+					Statistiques
 				</a>
 			</li>
 
 			<li>
 				<a href="{{ path('app_visiteur_index') }}" class="{{ app.request.attributes.get('_route') matches '/^app_visiteur(_|$)/' ? 'active' : '' }}">
 					<i class="bi bi-people"></i>
-					Visitors
+					Visiteurs
 				</a>
 			</li>
 
 			<li>
 				<a href="{{ path('app_user_index') }}" class="{{ app.request.attributes.get('_route') starts with 'app_user' ? 'active' : '' }}">
 					<i class="bi bi-person"></i>
-					Users
+					Utilisateurs
 				</a>
 			</li>
 

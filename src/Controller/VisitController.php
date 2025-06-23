@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Visit;
+use App\Entity\Associer;
 use App\Form\VisitForm;
+use App\Form\AssocierForm;
 use App\Repository\VisitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -124,4 +126,31 @@ final class VisitController extends AbstractController
 
         return $this->redirectToRoute('app_visit_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/associer', name: 'visite_associer', methods: ['GET', 'POST'])]
+    public function associerVisiteur(
+        Request $request,
+        Visit $visite,
+        EntityManagerInterface $em
+    ): Response {
+        $association = new Associer();
+        $association->setVisite($visite);
+
+        $form = $this->createForm(AssocierForm::class, $association);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($association);
+            $em->flush();
+
+            $this->addFlash('success', 'Visiteur associé à la visite.');
+            return $this->redirectToRoute('app_visite_show', ['id' => $visite->getId()]);
+        }
+
+        return $this->render('associer/form.html.twig', [
+            'form' => $form,
+            'visite' => $visite,
+        ]);
+    }
+
 }
