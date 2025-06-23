@@ -1,0 +1,20 @@
+<h2>Associer un visiteur à la visite : {{ visite.nom }}</h2>
+
+{{ form_start(form) }}
+    {{ form_row(form.visiteur) }}
+    {{ form_row(form.presence) }}
+    <button class="btn btn-primary">Associer</button>
+{{ form_end(form) }}
+
+{% if app.session.flashbag.has('success') %}
+    <div class="alert alert-success mt-3">
+        {{ app.session.flashbag.get('success')[0] }}
+    </div>
+{% endif %}
+
+{% if app.session.flashbag.has('error') %}
+    <div class="alert alert-danger mt-3">
+        {{ app.session.flashbag.get('error')[0] }}
+    </div>
+{% endif %}
+
