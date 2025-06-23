@@ -1,4 +1,91 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {
+    attr: {
+        class: 'needs-validation glass-form p-5 shadow-lg rounded-4 border-0',
+        novalidate: 'novalidate',
+        enctype: 'multipart/form-data'
+    }
+}) }}
+
+<h2 class="mb-4 text-center icon-button">Créer une visite</h2>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-camera-fill me-2 icon-ico"></i>Photos de la visite
+        </label>
+        {{ form_widget(form.pictures, { attr: { class: 'form-control form-control-lg shadow-sm', multiple: true } }) }}
+        {{ form_errors(form.pictures) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-globe me-2 icon-ico"></i>Pays
+        </label>
+        {{ form_widget(form.country, { attr: { class: 'form-control form-control-lg shadow-sm', placeholder: 'Entrez le pays' } }) }}
+        {{ form_errors(form.country) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-house-fill me-2 icon-ico"></i>Adresse
+        </label>
+        {{ form_widget(form.adress, { attr: { class: 'form-control form-control-lg shadow-sm', placeholder: 'Entrez l\'adresse' } }) }}
+        {{ form_errors(form.adress) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-calendar-fill me-2 icon-ico"></i>Date
+        </label>
+        {{ form_widget(form.date, { attr: { class: 'form-control form-control-lg shadow-sm' } }) }}
+        {{ form_errors(form.date) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-clock-fill me-2 icon-ico"></i>Heure de début
+        </label>
+        {{ form_widget(form.start_time, { attr: { class: 'form-control form-control-lg shadow-sm' } }) }}
+        {{ form_errors(form.start_time) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-clock-fill me-2 icon-ico"></i>Heure de fin
+        </label>
+        {{ form_widget(form.end_time, { attr: { class: 'form-control form-control-lg shadow-sm' } }) }}
+        {{ form_errors(form.end_time) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-hourglass-sand me-2 icon-ico"></i>Durée
+        </label>
+        {{ form_widget(form.duration, { attr: { class: 'form-control form-control-lg shadow-sm' } }) }}
+        {{ form_errors(form.duration) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-chat-dots-fill me-2 icon-ico"></i>Commentaire
+        </label>
+        {{ form_widget(form.comment, { attr: { class: 'form-control form-control-lg shadow-sm', placeholder: 'Ajoutez un commentaire' } }) }}
+        {{ form_errors(form.comment) }}
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-semibold">
+            <i class="bi bi-person-fill me-2 icon-ico"></i>Guide Touristique
+        </label>
+        {{ form_widget(form.guide, { attr: { class: 'form-select form-select-lg shadow-sm' } }) }}
+        {{ form_errors(form.guide) }}
+    </div>
+</div>
+
+<div class="mt-5 text-center">
+    <button type="submit" class="custom-button">
+        Enregistrer
+    </button>
+</div>
+
 {{ form_end(form) }}

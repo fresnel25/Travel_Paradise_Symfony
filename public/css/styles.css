@@ -635,3 +635,45 @@ img.avatar {
     width: 50px;
     height: 50px;
 }
+
+.glass-form {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.icon-ico {
+    color:#E69E5B;
+}
+
+.icn-but {
+    color:#E69E5B; 
+}
+.custom-button {
+    background-color: #E69E5B; /* Couleur personnalisée */
+    color: white; /* Couleur du texte */
+    padding: 12px 24px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 12px; /* Coins arrondis */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    cursor: pointer; /* Curseur en main */
+    transition: background-color 0.3s, transform 0.2s; /* Animation à la survol */
+}
+
+.custom-button:hover {
+    background-color: #d68a4a; /* Couleur au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille */
+}
+
+.custom-button:active {
+    transform: scale(0.95); /* Réduction lors du clic */
+}
+

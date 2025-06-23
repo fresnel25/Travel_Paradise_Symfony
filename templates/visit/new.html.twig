@@ -3,9 +3,9 @@
 {% block title %}New Visit{% endblock %}
 
 {% block content %}
-    <h1>Create new Visit</h1>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
     {{ include('visit/_form.html.twig') }}
 
-    <a href="{{ path('app_visit_index') }}">back to list</a>
+    {# <a href="{{ path('app_visit_index') }}">back to list</a> #}
 {% endblock %}
