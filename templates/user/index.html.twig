@@ -54,33 +54,40 @@
 						</td>
 					</tr>
 					<!-- Modal pour cet utilisateur -->
-					<div class="modal fade" id="userModal{{ user.id }}" tabindex="-1" aria-labelledby="userModalLabel{{ user.id }}" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="userModalLabel{{ user.id }}">Détails de l'utilisateur</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-								</div>
-								<div class="modal-body">
-									<p>
-										<strong>ID:</strong>
-										{{ user.id }}</p>
-									<p>
-										<strong>Email:</strong>
-										{{ user.email }}</p>
-									<p>
-										<strong>Rôles:</strong>
-										{{ user.roles|json_encode }}</p>
-									<p>
-										<strong>Profil:</strong>
-										{{ user.profil }}</p>
-									<p>
-										<strong>Statut:</strong>
-										{{ user.status ? 'Actif' : 'Inactif' }}</p>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="modal fade" id="userModal{{ user.id }}" tabindex="-1" aria-labelledby="userModalLabel{{ user.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 shadow-lg">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="userModalLabel{{ user.id }}">Détails de l'utilisateur</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <strong>ID:</strong>
+                        <span class="text-muted">{{ user.id }}</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong>Email:</strong>
+                        <span class="text-muted">{{ user.email }}</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong>Rôles:</strong>
+                        <span class="text-muted">{{ user.roles|json_encode }}</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong>Profil:</strong>
+                        <span class="text-muted">{{ user.profil }}</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong>Statut:</strong>
+                        <span class="text-muted">{{ user.status ? 'Actif' : 'Inactif' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 				{% else %}
 					<tr>
 						<td colspan="9" class="text-center">Aucun utilisateur trouvé.</td>
