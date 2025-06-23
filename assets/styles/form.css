@@ -6,21 +6,29 @@
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   background: #fff;
+  padding: 2.5rem 2rem 2rem 2rem;
 }
 .form-card .card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
   color: #1C2E45;
+  margin-bottom: 2rem;
 }
-.form-card .form-label {
+.form-card label {
   font-weight: 500;
   color: #444A6D;
+  margin-bottom: 0.5rem;
+}
+.form-card .form-group {
+  margin-bottom: 1.5rem;
 }
 .form-card .form-control {
   border-radius: 8px;
   border: 1px solid #C3D3E2;
   box-shadow: none;
   transition: border-color 0.2s;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
 }
 .form-card .form-control:focus {
   border-color: #4079ED;
@@ -32,6 +40,7 @@
   border-radius: 8px;
   font-weight: 500;
   padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
 }
 .form-card .btn-primary:hover {
   background: #305bb5;
@@ -39,4 +48,8 @@
 .form-card .btn-link {
   color: #4079ED;
   text-decoration: underline;
+}
+.form-card .invalid-feedback {
+  color: #e3342f;
+  font-size: 0.95rem;
 }

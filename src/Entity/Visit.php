@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\User;
 use App\Repository\VisitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -42,6 +44,19 @@ class Visit
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $guide = null;
+
+   
+
+    /**
+     * @var Collection<int, Associer>
+     */
+    #[ORM\OneToMany(targetEntity: Associer::class, mappedBy: 'visite')]
+    private Collection $associers;
+
+    public function __construct()
+    {
+        $this->associers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -152,6 +167,40 @@ class Visit
     public function setGuide(?User $guide): static
     {
         $this->guide = $guide;
+
+        return $this;
+    }
+
+    
+
+    
+
+    /**
+     * @return Collection<int, Associer>
+     */
+    public function getAssociers(): Collection
+    {
+        return $this->associers;
+    }
+
+    public function addAssocier(Associer $associer): static
+    {
+        if (!$this->associers->contains($associer)) {
+            $this->associers->add($associer);
+            $associer->setVisite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssocier(Associer $associer): static
+    {
+        if ($this->associers->removeElement($associer)) {
+            // set the owning side to null (unless already changed)
+            if ($associer->getVisite() === $this) {
+                $associer->setVisite(null);
+            }
+        }
 
         return $this;
     }

@@ -1,5 +1,132 @@
 {% extends 'layout.html.twig' %}
 
+{% block page %}
+  Dashboard
+{% endblock %}
 {% block content %}
-    <h1>Bienvenue sur le Dashboard</h1>
+  <!-- Dashboard Content -->
+  <div class="dashboard-container">
+    <div class="container-fluid py-4">
+      <div class="row">
+        <!-- Sales Summary Section -->
+        <div class="col-lg-8 mb-4">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <h4 class="mb-1">Today's</h4>
+                <p class="text-muted mb-0">Sales Summary</p>
+              </div>
+              <button class="btn btn-outline-secondary"><i class="bi bi-download me-2"></i>Export</button>
+            </div>
+            <div class="row g-4">
+              <!-- Sales Card -->
+              <div class="col-md-3">
+                <div class="stat-card sales">
+                  <div class="stat-icon sales">
+                    <i class="bi bi-currency-dollar text-white"></i>
+                  </div>
+                  <div class="stat-value">$1k</div>
+                  <div class="stat-label">Total Sales</div>
+                  <div class="stat-change">Last day +8%</div>
+                </div>
+              </div>
+              <!-- Orders Card -->
+              <div class="col-md-3">
+                <div class="stat-card orders">
+                  <div class="stat-icon orders">
+                    <i class="bi bi-cart text-white"></i>
+                  </div>
+                  <div class="stat-value">300</div>
+                  <div class="stat-label">Total Order</div>
+                  <div class="stat-change">Last day +5%</div>
+                </div>
+              </div>
+              <!-- Sold Card -->
+              <div class="col-md-3">
+                <div class="stat-card sold">
+                  <div class="stat-icon sold">
+                    <i class="bi bi-check-circle text-white"></i>
+                  </div>
+                  <div class="stat-value">5</div>
+                  <div class="stat-label">Sold</div>
+                  <div class="stat-change">Last day +1.2%</div>
+                </div>
+              </div>
+              <!-- Customers Card -->
+              <div class="col-md-3">
+                <div class="stat-card customers">
+                  <div class="stat-icon customers">
+                    <i class="bi bi-people text-white"></i>
+                  </div>
+                  <div class="stat-value">8</div>
+                  <div class="stat-label">Customers</div>
+                  <div class="stat-change">Last day +0.5%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visitor Insights Section -->
+        <div class="col-lg-4 mb-4">
+          <div class="card p-4">
+            <h4 class="mb-4">Visitor Insights</h4>
+            <div class="mb-4">
+              <img src="{{asset('assets/images/image_1749274277618_717.png')}}" alt="Visitor Insights" class="img-fluid" />
+            </div>
+            <div class="d-flex justify-content-center gap-2">
+              <div class="legend-item">
+                <div class="legend-dot" style="background-color: #A700FF;"></div>
+                <span class="legend-text">Loyal Customers</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background-color: #EF4444;"></div>
+                <span class="legend-text">New Customers</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background-color: #3CD856;"></div>
+                <span class="legend-text">Unique Customers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Revenue Section -->
+        <div class="col-lg-8 mb-4">
+          <div class="card p-4">
+            <h4 class="mb-4">Total Revenue</h4>
+            <img src="{{asset('assets/images/image_1749274277621_327.png')}}" alt="Total Revenue" class="img-fluid" />
+          </div>
+        </div>
+
+        <!-- Visitors Satisfaction Section -->
+        <div class="col-lg-4 mb-4">
+          <div class="card p-4">
+            <h4 class="mb-4">Visitors Satisfaction</h4>
+            <div class="mb-4">
+              <img src="{{asset('assets/images/image_1749274277621_998.png')}}" alt="Visitors Satisfaction" class="img-fluid" />
+            </div>
+            <div class="satisfaction-stats">
+              <div class="row">
+                <div class="col-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <div class="legend-dot me-2" style="background-color: #0095FF;"></div>
+                    <span class="legend-text">Last Month</span>
+                  </div>
+                  <div class="satisfaction-value">$1,017</div>
+                </div>
+                <div class="col-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <div class="legend-dot me-2" style="background-color: #07E098;"></div>
+                    <span class="legend-text">This Month</span>
+                  </div>
+                  <div class="satisfaction-value">$1,757</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

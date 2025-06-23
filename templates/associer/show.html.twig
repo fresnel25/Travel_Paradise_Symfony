@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Associer{% endblock %}
+
+{% block body %}
+    <h1>Associer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ associer.id }}</td>
+            </tr>
+            <tr>
+                <th>Presence</th>
+                <td>{{ associer.presence ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_associer_index') }}">back to list</a>
+
+    <a href="{{ path('app_associer_edit', {'id': associer.id}) }}">edit</a>
+
+    {{ include('associer/_delete_form.html.twig') }}
+{% endblock %}
