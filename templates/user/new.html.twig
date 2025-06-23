@@ -4,15 +4,15 @@
 {% endblock %}
 
 {% block content %}
-
-	<div class="card">
-		<h1 class="titre text-center">Créer un utilisateur</h1>
-	</div>
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+		
+		
 
 	<div class="card mt-5">
 		{{ include('user/_form.html.twig') }}
 	</div>
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+	{# <a href="{{ path('app_user_index') }}">back to list</a>
+	<button type="button" class="btn btn-dark">Dark</button> #}
 	<script type="text/javascript" src="{{ asset('js/loginform.js') }}"></script>
 {% endblock %}
